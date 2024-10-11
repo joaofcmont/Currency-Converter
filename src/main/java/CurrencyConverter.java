@@ -2,6 +2,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,19 @@ import javax.servlet.http.HttpServletResponse;
 public class CurrencyConverter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
+	// Conversion rates
+    private static final Map<String, Double> conversionRates = new HashMap<>();
+
+    static {
+        conversionRates.put("USD_EUR", 0.91);
+        conversionRates.put("EUR_USD", 1.10);
+        conversionRates.put("USD_YUAN", 7.07);
+        conversionRates.put("YUAN_USD", 0.14);
+        conversionRates.put("EUR_YUAN", 7.74);
+        conversionRates.put("YUAN_EUR", 0.13);
+        // Add more currencies as needed
+    }
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -79,6 +94,8 @@ public class CurrencyConverter extends HttpServlet {
 		}
 		out.println("</body></html>");
 	}
+	
+//	private boolean isInputValid()
 
 
 
